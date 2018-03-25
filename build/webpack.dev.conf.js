@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-const vConsolePlugin = require('vconsole-webpack-plugin')
+// const vConsolePlugin = require('vconsole-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -66,10 +66,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
-    new vConsolePlugin({
-      filter: [],
-      enable: true
-    })
+    // new vConsolePlugin({
+    //   filter: [],
+    //   enable: true
+    // })
   ]
 })
 

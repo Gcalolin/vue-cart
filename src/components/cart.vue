@@ -1,13 +1,15 @@
 <template>
-  <div class="cart-item">
-    <img src="https://img.alicdn.com/imgextra/i2/1757237602/TB2.YxKaRsmBKNjSZFFXXcT9VXa_!!1757237602-0-item_pic.jpg_430x430q90.jpg" alt="">
+<div class="cart-list-wrapper">
+  <div class="cart-item" v-for="(item, index) in cartGoodsList" :key="index">
+    <img :src="item.thumb" alt="">
     <div class="goods-info">
-      <p class="goods-title">户外运动舒适两件套男士</p>
+      <p class="goods-title">{{item.title}}</p>
+      <p class="goods-money">￥{{item.money}}</p>
       <div class="btn-group">
         <div class="change">
-          <button class="decrease">-</button>
-          <input type="number">
-          <button class="increase">+</button>
+          <button class="decrease" @click="reduceGoods(item)">-</button>
+          <input type="number" :value="item.num" @blur="handleBlur(item)" @input="handleChange(item)" ref="goodsNum">
+          <button class="increase" @click="increaseGoods(item)">+</button>
         </div>
         <button class="count" >10</button>
         <button class="count" >20</button>
@@ -15,19 +17,42 @@
         <button class="count" >100</button>
       </div>
     </div>
-    <div class="operate-delete">删除</div>
+    <div class="operate-delete" @click="deleteGoods(index, item)">删除</div>
   </div>
+</div>
 </template>
 
 <script type="text/javascript">
   export default {
     data() {
       return {
-
+        cartGoodsList: []
       }
     },
+    created() {
+      this.cartGoodsList = this.$store.state.cart.cart
+    },
     methods: {
-
+      /*删除商品*/
+      deleteGoods(index, goods) {
+        this.$store.dispatch('cart/delete_goods_from_cart', goods)
+      },
+      reduceGoods(goods) {
+        this.$store.dispatch('cart/reduce_goods_from_cart', goods)
+      },
+      increaseGoods(goods) {
+        this.$store.dispatch('cart/add_goods_from_cart', goods)
+      },
+       /*监听购物车修改商品数量*/
+      handleBlur(goods) {
+        /*计算购物车的数量*/
+        let num = goods.num == '' ? 1 : goods.num
+        console.log('num', num)
+        this.$store.dispatch('cart/modify_goods_num_from_cart', {
+          goods: goods,
+          num: num
+        })
+      }
     }
   }
 </script>
@@ -49,6 +74,13 @@
     }
     .goods-title{
       padding: 5px 0;
+      width: 180px;
+    }
+    .goods-money {
+      color: #f13329;
+    }
+    .operate-delete {
+      color: #7bbfea;
     }
     .btn-group {
       input {

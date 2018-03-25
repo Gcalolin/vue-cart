@@ -1,12 +1,22 @@
 <template>
   <div id="app">
     <router-view/>
+    <tarbar></tarbar>
   </div>
 </template>
 
 <script>
+import tarbar from './components/tarbar.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    'tarbar': tarbar
+  }
 }
 </script>
 
