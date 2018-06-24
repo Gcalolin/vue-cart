@@ -6,7 +6,10 @@
         首页
       </router-link>
       <router-link tag="li" class="tarbar-item tabbar-cart" :to="{name: 'cart'}">
-        <i></i>
+        <i ref="cartIcon"></i>
+        <!-- 购物车小球的徽标 -->
+        <span class="cart-blank-circle" id="cartNum"></span>
+        <span class="cart-num" v-show="cartNum">{{ cartNum }}</span>
         购物车
       </router-link>
     </ul>
@@ -16,7 +19,9 @@
 <script type="text/javascript">
   export default {
     data() {
-      return {}
+      return {
+        cartNum: 2
+      }
     }
   }
 </script>
@@ -76,6 +81,27 @@
         background-size: 100%;
       }
     }
+  }
+  .cart-num,
+  .cart-blank-circle {
+    width: 17px;
+    height: 17px;
+    line-height: 19px;
+    padding: 0;
+    text-align: center;
+    top: 0;
+    right: 70px;
+    display: inline-block;
+    color: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+    transition: all .1s ease-out;
+    font-size: 12px;
+    z-index: 99;
+    transform: scale(0.8);
+  }
+  .cart-num {
+    background: #f13329;
   }
   /*购物车*/
   .tabbar-cart {

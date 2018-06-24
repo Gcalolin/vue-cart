@@ -297,34 +297,4 @@ button {
 }
 .clearfix{overflow:auto;_height:1%}
 
-/*图钉*/
-.ivu-affix {
-  position: fixed;
-  z-index: 10;
-}
-
-/*骨架屏*/
-.skeleton {
-  max-width: 414px;
-  height: 667px;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-/*空盒子*/
-.block {
-  width: 100%;
-  height: px2rem(46);
-}
-/*登录注册相关页面底部的文字样式*/
-.font-bottom {
-  text-align: center;
-  position: absolute;
-  bottom: px2rem(10);
-  left: 0;
-  right: 0;
-  font-size: px2rem(13);
-  color: #a3a3a3;
-  margin: auto;
-  border: px2rem(10) solid transparent;
-}
 

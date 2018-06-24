@@ -17,7 +17,7 @@
         <!--立即参与-->
         <span class="buy">商品详情</span>
         <!--加入购物车-->
-        <span class="add-cart"></span>
+        <span class="add-cart" @click="addCart(product, $event)"></span>
       </div>
     </div>
    </div>
@@ -37,76 +37,15 @@
       product: {
         type: Object
       },
-      isRecomment: {
-        type: Boolean
-      },
-      /*是否是购物车的热门推荐*/
-      isCartRecomment: {
-        type: Boolean,
-        default: false
-      },
-     
     },
     /*组件方法*/
     methods: {
       /*加入购物车*/
       addCart(product) {
-        /*判断商品是否已经在购物车中*/
-        let hasGoods = this.$store.getters['cart/hasGoods'](product)
-        if (hasGoods) {
-          let shoppingCart = JSON.parse(localStorage.cart)
-          let index = `p${product.id}`
-          /*购物车的数量*/
-          let num = shoppingCart[index].num
-          let hadBought = shoppingCart[index].buy
-          /*是否可以加入购物车*/
-          /*商品非限购的且达到了剩余的数量*/
-          if (num >= product.remainder) {
-            this.toast('您已达到本期商品的购买上限')
-            return
-          }
-          /*购物车中已经存在*/
-          this.$store.dispatch('cart/add_goods_num_for_cart', product)
-          if (this.isRecomment && !this.isCartRecomment) {
-            this.toast('成功加入购物车')
-          }
-        } else {
-          /*判断购物车是否已经超过了99件商品*/
-          const MAX_CART_NUM = 99
-          if (this.cartNum > MAX_CART_NUM-1) {
-            this.toast('购物车已满，要增加商品请删除其他商品')
-            return
-          }
-          /*不存在，往购物车中添加购买次数num=1和current_period=period*/
-          product.num = 1
-          product.pre_num = 1
-          product.current_period = product.period
-          this.$store.dispatch('cart/create_goods_to_cart', {
-            product: product,
-            type: PREFERENCE
-          })
-          if (this.isRecomment && !this.isCartRecomment) {
-            this.toast('成功加入购物车')
-          }
-        }
+
         let target = this.$refs.thumb
-        console.log(target)
-        this.$emit('add', target)
+        this.$emit('addCart', target)
       },
-      /*进入商品详情页*/
-      goPreferenceDetail() {
-        this.$router.push({
-          name: 'PreferencesInfo',
-          params: {
-            id: this.product.id,
-            period: this.product.period
-          }
-        })
-      },
-      /*传递点击事件 显示弹窗*/
-      questionStatus() {
-        this.$emit('showQuestionAlert')
-      }
     },
     /*组件加载完毕执行的操作*/
     mounted() {

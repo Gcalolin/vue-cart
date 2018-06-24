@@ -1,6 +1,12 @@
 <template>
 	<div>
-		<goods-item v-for="(item, index) in goodsList" :product="item" :key="index"></goods-item>
+		<goods-item 
+			v-for="(item, index) in goodsList" 
+			:product="item" 
+			:key="index"
+			@addCart="addCart" >
+		</goods-item>
+		<div style="height: 49px;width: 100%;clear: both;"></div>
 	</div>
 </template>
 
@@ -18,6 +24,11 @@
 		},
 		components: {
 			goodsItem
+		},
+		methods: {
+			addCart(target) {
+				this.$emit('addCart', target)
+			}
 		}
 	}
 </script>

@@ -1,6 +1,6 @@
 <template>
 <div class="cart-list-wrapper">
-  <div class="cart-item" v-for="(item, index) in cartGoodsList" :key="index">
+  <div class="cart-item" v-if="cartGoodsList.length!=0" v-for="(item, index) in cartGoodsList" :key="index" >
     <img :src="item.thumb" alt="">
     <div class="goods-info">
       <p class="goods-title">{{item.title}}</p>
@@ -19,6 +19,10 @@
     </div>
     <div class="operate-delete" @click="deleteGoods(index, item)">删除</div>
   </div>
+  <div class="cart-empty" v-if="cartGoodsList.length==0"> 
+    <i class="icon-empty"></i>
+    <span>购物车为空</span>
+  </div>
 </div>
 </template>
 
@@ -30,7 +34,7 @@
       }
     },
     created() {
-      this.cartGoodsList = this.$store.state.cart.cart
+      // this.cartGoodsList = this.$store.state.cart.cart
     },
     methods: {
       /*删除商品*/
@@ -61,6 +65,23 @@
   html,body,p {
     margin: 0 !important;
     padding: 0 !important; 
+  }
+  .cart-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+    .icon-empty {
+      display: inline-block;
+      background: url('../assets/pic_blank@3x.png') no-repeat;
+      width: 200px;
+      height: 200px;
+      background-size: 100%;
+    }
+    span {
+      font-size: 16px;
+    }
   }
   .cart-item {
     display: flex;
