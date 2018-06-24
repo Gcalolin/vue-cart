@@ -1,0 +1,330 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  background: #f8f8f8;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+}
+
+ul {
+  list-style: none;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+/*解决渲染的时候闪烁*/
+[v-cloak] {
+  display: none;
+}
+/*后面添加*/
+html,
+body,
+div,
+span,
+p,
+a,
+address,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+b,
+i,
+ol,
+ul,
+li,
+form,
+label,
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+section,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
+  color: #a3a3a3;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+input,
+a,
+textarea {
+  outline: none;
+}
+
+textarea {
+  background: transparent;
+  resize:none;
+}
+
+i,
+em,
+b {
+  font-style: normal;
+}
+
+b,
+span,
+i {
+  display: inline-block;
+}
+/*去掉表单自动填充背景色*/
+input:-webkit-autofill { 
+  -webkit-box-shadow: 0 0 0px 1000px white inset; 
+  color: #a3a3a3;
+} 
+
+.red-font-12 {
+    color: #f13329;
+    font-size: px2rem(12);
+}
+.red-font-13 {
+    color: #f13329;
+    font-size: px2rem(13);
+}
+.red-font-15 {
+    color: #f13329;
+    font-size: px2rem(15);
+}
+.gray-font-11 {
+    color: #a3a3a3;
+    font-size: px2rem(11);
+}
+.gray-font-12 {
+    color: #a3a3a3;
+    font-size: px2rem(12)
+}
+.gray-font-13 {
+    color: #a3a3a3;
+    font-size: px2rem(13)
+}
+.gray-font-15 {
+    color: #a3a3a3;
+    font-size: px2rem(15)
+}
+.grayer-font-12 {
+    color: #808080;
+    font-size: px2rem(12);
+}
+.grayer-font-13 {
+    color: #808080;
+    font-size: px2rem(13);
+}
+.grayer-font-10 {
+    color: #808080;
+    font-size: px2rem(10);
+}
+.dark-font-12 {
+    color: #565656;
+    font-size: px2rem(12);
+}
+.dark-font-13 {
+    color: #565656;
+    font-size: px2rem(13);
+}
+.dark-font-15 {
+    color: #565656;
+    font-size: px2rem(15);
+}
+.darken-font-13 {
+    color: #333;
+    font-size: px2rem(13);
+}
+.darken-font-15 {
+    color: #333;
+    font-size: px2rem(15);
+}
+.light-blue-font-12 {
+    color: #22aaff;
+    font-size: px2rem(12);
+}
+.light-blue-font-13 {
+    color: #22aaff;
+    font-size: px2rem(13);
+}
+.light-blue-font-15 {
+    color: #22aaff;
+    font-size: px2rem(15);
+}
+.white-font-13 {
+  color: #fff;
+  font-size: px2rem(13);
+}
+/*1边框像素问题解决*/
+.border-1px, .border-bottom-1px, .border-top-1px, .border-left-1px, .border-right-1px, .border-left-bottom-1px {
+  position: relative;
+}
+
+/*线条颜色 黑色*/
+.border-1px::after,
+.border-bottom-1px::after,
+.border-top-1px::after,
+.border-left-1px::after,
+.border-right-1px::after,
+.border-left-bottom-1px::before,
+.border-left-bottom-1px::after {
+  background-color: #e5e5e5;
+}
+
+/*底边边框一像素*/
+.border-bottom-1px::after, .border-left-bottom-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform-origin: 0 0;
+}
+
+/*上边边框一像素*/
+.border-top-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  transform-origin: 0 0;
+}
+
+/*左边边框一像素*/
+.border-left-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+.border-left-bottom-1px::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+/*右边边框1像素*/
+.border-right-1px::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+/*边框一像素*/
+.border-1px::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+}
+
+/*设备像素比*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0), only screen and (min-resolution: 2dppx) {
+  .border-bottom-1px::after, .border-top-1px::after, .border-left-bottom-1px::after {
+    //background: red;
+    transform: scaleY(0.5);
+  }
+  .border-left-1px::after, .border-right-1px::after, .border-left-bottom-1px::before {
+    transform: scaleX(0.5);
+  }
+  .border-1px::after {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+/*设备像素比*/
+@media only screen and (-webkit-min-device-pixel-ratio: 3.0), only screen and (min-resolution: 3dppx) {
+  .border-bottom-1px::after, .border-top-1px::after, .border-left-bottom-1px::after {
+    transform: scaleY(0.333);
+  }
+  .border-left-1px::after, .border-right-1px::after, .border-left-bottom-1px::before {
+    transform: scaleX(0.333);
+  }
+  .border-1px::after {
+    width: 300%;
+    height: 300%;
+    transform: scale(0.333);
+    transform-origin: 0 0;
+  }
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.clearfix{overflow:auto;_height:1%}
+
+/*图钉*/
+.ivu-affix {
+  position: fixed;
+  z-index: 10;
+}
+
+/*骨架屏*/
+.skeleton {
+  max-width: 414px;
+  height: 667px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+/*空盒子*/
+.block {
+  width: 100%;
+  height: px2rem(46);
+}
+/*登录注册相关页面底部的文字样式*/
+.font-bottom {
+  text-align: center;
+  position: absolute;
+  bottom: px2rem(10);
+  left: 0;
+  right: 0;
+  font-size: px2rem(13);
+  color: #a3a3a3;
+  margin: auto;
+  border: px2rem(10) solid transparent;
+}
+

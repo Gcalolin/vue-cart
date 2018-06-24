@@ -1,21 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import cart from '@/components/cart'
-import indexHome from '@/components/indexHome'
+import cart from '@/views/cart'
+import indexHome from '@/views/indexHome'
+import homePage from '@/views/homePage'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
+let router = [
     {
       path: '/',
-      name: 'home',
-      component: indexHome
+      name: 'homePage',
+      component: homePage
     },
     {
       path: '/cart',
       name: 'cart',
       component: cart
-    }
-  ]
+    }]
+
+export default new Router({
+  routes: router,
+  linkActiveClass: 'active'
 })

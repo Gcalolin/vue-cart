@@ -1,10 +1,12 @@
 <template>
   <div class="tabbar-wrapper">
     <ul class="tarbar-container border-top-1px">
-      <router-link tag="li" class="tarbar-item" :to="{path: '/'}" exact>
+      <router-link tag="li" class="tarbar-item tabbar-homepage" :to="{path: '/'}" exact>
+        <i></i>
         首页
       </router-link>
-      <router-link tag="li" class="tarbar-item" :to="{name: 'cart'}">
+      <router-link tag="li" class="tarbar-item tabbar-cart" :to="{name: 'cart'}">
+        <i></i>
         购物车
       </router-link>
     </ul>
@@ -55,6 +57,41 @@
     i {
       background-repeat: no-repeat;
       font-size: 18px;
+    }
+  }
+
+  /*首页*/
+  .tabbar-homepage {
+    i {
+      background: url('../assets/home_normal@3x.png');
+      width: 21px;
+      height: 21px;
+      background-size: 100%;
+    }
+    &.active {
+      i {
+        background: url('../assets/home_click@3x.png');
+        width: 21px;
+        height: 21px;
+        background-size: 100%;
+      }
+    }
+  }
+  /*购物车*/
+  .tabbar-cart {
+    i {
+      background: url('../assets/cart_normal@3x.png');
+      width: 21px;
+      height: 21px;
+      background-size: 100%;
+    }
+    &.active {
+      i {
+        background: url('../assets/cart_click@3x.png');
+        width: 21px;
+        height: 21px;
+        background-size: 100%;
+      }
     }
   }
 }
