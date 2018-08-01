@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       /*重复点击时存储缩略图的数组*/
-      thumbs: []
+      thumbs: [],
+      //----------
     }
   },
   components: {
