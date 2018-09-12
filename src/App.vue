@@ -27,8 +27,8 @@ export default {
       /*获取原图片的位置*/
       let top = target.getBoundingClientRect().top
       let left = target.getBoundingClientRect().left
-      console.log('top', top)
-      console.log('left', left)
+      // console.log('top', top)
+      // console.log('left', left)
 
       /*创建一个缩略图标签*/
       let copyThumb = document.createElement('img')
@@ -129,12 +129,12 @@ export default {
 
         /*重复点击时会生成多张缩略图，将其存入thumbs数组中*/
         this.thumbs = document.getElementsByClassName('copyThumb')
-        console.log('缩略图数组长度',this.thumbs.length)
+        // console.log('缩略图数组长度',this.thumbs.length)
 
         /*将新建的多余的缩略图从app的dom中移除，避免快速重复点击时重复动画*/
         if (this.thumbs.length > 0) {
           container.removeChild(this.thumbs[0])
-          console.log('移除成功')
+          // console.log('移除成功')
         }
 
         /*将缩略图挂载在app上*/

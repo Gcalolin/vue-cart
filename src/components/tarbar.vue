@@ -17,11 +17,17 @@
 </template>
 
 <script type="text/javascript">
+  import { mapGetters } from 'vuex'
   export default {
     data() {
       return {
-        cartNum: 2
+        
       }
+    },
+    computed: {
+      ...mapGetters({
+        'cartNum': 'cart/cartNum'
+      })
     }
   }
 </script>

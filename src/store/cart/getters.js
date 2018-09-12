@@ -6,14 +6,17 @@ export default {
     return `p${goods.id}` in state.cart
   },
   /*返回购物车的数量*/
-  
+  cartNum:state => {
+    let cart = state.cart
+    return Object.keys(cart).length
+  },
   /*计算购物车的金额*/
   cartsMoney: state => {
     let cart = state.cart
     let money = 0
     for(let item in cart) {
-      money += cart[item].unit_price * cart[item].num
+      money += cart[item].money * cart[item].num
     }
-    return money
+    return Number(money)
   }
 }
